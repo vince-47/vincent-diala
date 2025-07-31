@@ -116,7 +116,7 @@ const ContactSection = () => {
         </div>
       </section>
 
-      {/* Contact Form Modal */}
+      {/* Contact Modal */}
       <AnimatePresence>
         {contactFormOpen && (
           <motion.div
@@ -136,75 +136,50 @@ const ContactSection = () => {
                 stiffness: 200,
                 duration: 0.8,
               }}
-              className="bg-white dark:bg-gray-800 rounded-xl shadow-xl w-full max-w-md p-6"
+              className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl shadow-2xl w-full max-w-md p-6 border border-gray-700"
             >
-              <div className="flex justify-between items-center mb-4">
-                <h1 className="text-2xl font-bold text-gray-300">Get In Touch</h1>
+              <div className="flex justify-between items-center mb-6">
+                <h1 className="text-2xl font-extrabold text-white">📞 Get In Touch</h1>
                 <button onClick={closeContactForm}>
-                  <FiX className="w-5 h-5 text-gray-300 font-extrabold" />
+                  <FiX className="w-6 h-6 text-white hover:text-red-400 transition" />
                 </button>
               </div>
 
-              {/* FormSubmit form */}
-              <form
-                action="https://formsubmit.co/vincentdiala14@email.com"  // ✅ REPLACE THIS
-                method="POST"
-                className="space-y-4"
-              >
-                <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you" />
-
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    placeholder="Your Name"
-                    className="w-full px-4 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 bg-gray-700"
-                  />
+              <div className="space-y-5 text-white text-[1rem]">
+                <div className="flex items-center justify-between bg-gray-700/50 px-4 py-3 rounded-xl">
+                  <div>
+                    <p className="text-sm opacity-70">Email</p>
+                    <p className="font-semibold text-lg">
+                      <a href="mailto:vincentdiala14@gmail.com" className="hover:underline">
+                        vincentdiala14@gmail.com
+                      </a>
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => navigator.clipboard.writeText("vincentdiala14@gmail.com")}
+                    className="text-sm px-3 py-1 rounded-lg bg-violet-600 hover:bg-violet-700 transition"
+                  >
+                    Copy
+                  </button>
                 </div>
 
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    placeholder="Your Email"
-                    className="w-full px-4 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 bg-gray-700"
-                  />
+                <div className="flex items-center justify-between bg-gray-700/50 px-4 py-3 rounded-xl">
+                  <div>
+                    <p className="text-sm opacity-70">Phone</p>
+                    <p className="font-semibold text-lg">
+                      <a href="tel:+639166667143" className="hover:underline">
+                        +63 916 666 7143
+                      </a>
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => navigator.clipboard.writeText("09166667143")}
+                    className="text-sm px-3 py-1 rounded-lg bg-violet-600 hover:bg-violet-700 transition"
+                  >
+                    Copy
+                  </button>
                 </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">
-                    Message
-                  </label>
-                  <textarea
-                    rows="4"
-                    id="message"
-                    name="message"
-                    required
-                    placeholder="How can we help you?"
-                    className="w-full px-4 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 bg-gray-700"
-                  />
-                </div>
-
-                <motion.button
-                  type="submit"
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="w-full px-4 py-2 bg-gradient-to-r from-violet-600 to-violet-400 hover:from-violet-700 hover:to-purple-700 transition-all duration-300 rounded-lg shadow-md hover:shadow-lg hover:shadow-violet-600/50"
-                >
-                  Send Message
-                </motion.button>
-              </form>
+              </div>
             </motion.div>
           </motion.div>
         )}
@@ -214,3 +189,4 @@ const ContactSection = () => {
 }
 
 export default ContactSection
+
