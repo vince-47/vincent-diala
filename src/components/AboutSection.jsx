@@ -172,7 +172,7 @@ const AboutSection = () => {
           className="bg-white/10 backdrop-blur-md rounded-2xl shadow-xl p-8 max-w-3xl mx-auto text-purple-100 text-lg md:text-xl leading-relaxed mb-20"
         >
           I'm{" "}
-          <strong className="text-purple-300">a dedicated Frontend Developer</strong>, who builds fast and polished web apps using React, Tailwind CSS, and JavaScript. I also integrate back-end support with PHP, MySQL, and MongoDB to deliver smooth, responsive applications.
+          <strong className="text-purple-300">a dedicated Frontend Developer</strong>, who builds fast and polished web apps using React, Tailwind CSS, and JavaScript. I also integrate back-end support with PHP, MySQL, and SupaBase to deliver smooth, responsive applications.
         </motion.div>
 
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">SKILLS</h2>
