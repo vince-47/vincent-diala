@@ -25,6 +25,9 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const toggleModal = () => setIsModalOpen(!isModalOpen);
+
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -95,7 +98,10 @@ const Header = () => {
           {[
             { Icon: FiGithub, href: "https://github.com/vince-47" },
             { Icon: FiInstagram, href: "https://www.instagram.com/vince_diala/" },
-            { Icon: FiLinkedin, href: "https://www.linkedin.com/in/vincent-diala-125880219?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BEXLdYUpiTbSEbIVPYJFnvg%3D%3D" },
+            {
+              Icon: FiLinkedin,
+              href: "https://www.linkedin.com/in/vincent-diala-125880219",
+            },
           ].map(({ Icon, href }, index) => (
             <motion.a
               key={index}
@@ -125,7 +131,7 @@ const Header = () => {
             stiffness: 100,
             damping: 15,
           }}
-          className="ml-4 px-4 py-2 rounded-xl bg-gray-300 text-black font-bold hover:bg-black hover:text-white  transition-all duration-500"
+          className="ml-4 px-4 py-2 rounded-xl bg-gray-300 text-black font-bold hover:bg-black hover:text-white transition-all duration-500"
         >
           My Resume
         </motion.a>
@@ -169,7 +175,10 @@ const Header = () => {
                 {[
                   { Icon: FiGithub, href: "https://github.com/vince-47" },
                   { Icon: FiInstagram, href: "https://www.instagram.com/vince_diala/" },
-                  { Icon: FiLinkedin, href: "https://www.linkedin.com/in/vincent-diala-125880219?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BEXLdYUpiTbSEbIVPYJFnvg%3D%3D" },
+                  {
+                    Icon: FiLinkedin,
+                    href: "https://www.linkedin.com/in/vincent-diala-125880219",
+                  },
                 ].map(({ Icon, href }, index) => (
                   <a href={href} target="_blank" rel="noopener noreferrer" key={index}>
                     <Icon className="h-5 w-5 text-gray-300" />
@@ -177,14 +186,82 @@ const Header = () => {
                 ))}
               </div>
 
-              <a
-                href="/RESUME-DIALA.pdf"
-                download
+              <button
+                onClick={toggleModal}
                 className="mt-4 block w-full px-4 py-2 rounded-lg bg-gradient-to-r from-violet-600 to-violet-400 font-bold text-white text-center"
               >
                 Contact Me
-              </a>
+              </button>
             </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Modal */}
+      <AnimatePresence>
+        {isModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[999] bg-black/60 backdrop-blur-sm flex justify-center items-center px-4"
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              transition={{ duration: 0.4 }}
+              className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl shadow-2xl w-full max-w-md p-6 border border-gray-700 text-white"
+            >
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-2xl font-bold">📞 Get In Touch</h2>
+                <button onClick={toggleModal}>
+                  <FiX className="w-6 h-6 hover:text-red-400 transition" />
+                </button>
+              </div>
+
+              <div className="space-y-5">
+                <div className="flex justify-between items-center bg-gray-700/50 px-4 py-3 rounded-xl">
+                  <div>
+                    <p className="text-sm opacity-70">Email</p>
+                    <p className="text-lg font-semibold">
+                      <a href="mailto:vincentdiala14@gmail.com" className="hover:underline">
+                        vincentdiala14@gmail.com
+                      </a>
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText("vincentdiala14@gmail.com");
+                      console.log("Email copied");
+                    }}
+                    className="text-sm px-3 py-1 rounded-lg bg-violet-600 hover:bg-violet-700 transition"
+                  >
+                    Copy
+                  </button>
+                </div>
+
+                <div className="flex justify-between items-center bg-gray-700/50 px-4 py-3 rounded-xl">
+                  <div>
+                    <p className="text-sm opacity-70">Phone</p>
+                    <p className="text-lg font-semibold">
+                      <a href="tel:+639166667143" className="hover:underline">
+                        +63 916 666 7143
+                      </a>
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText("09166667143");
+                      console.log("Phone copied");
+                    }}
+                    className="text-sm px-3 py-1 rounded-lg bg-violet-600 hover:bg-violet-700 transition"
+                  >
+                    Copy
+                  </button>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -193,4 +270,3 @@ const Header = () => {
 };
 
 export default Header;
-
